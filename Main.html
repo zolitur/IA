@@ -5,6 +5,7 @@
     <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/wasm-flate@0.1.11-alpha/dist/bootstrap.js"></script>
     <script type="text/javascript"
             src= 
     "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"> 
@@ -28,16 +29,14 @@
             }
             else {
                 profileType = "Co-op"
-            }
-            let encodedPlayerArmor = myJson.profile.members[profileId].inv_armor.data
-            let pako = require('pako');
-
-            let decodedPlayerArmor = pako.deflate(encodedPlayerArmor)
+            };
+            let encodedPlayerArmor = myJson.profile.members[profileId].inv_armor.data;
+            let decodedPlayerArmor = flate.zlib_decode(atob(encodedPlayerArmor))
             console.log("Profile ID:" + profileId)
             console.log(profileType)
             console.log("Members list:" + membersList)
             console.log("Encoded Armor Data:" + encodedPlayerArmor)
-            console.log(decodedPlayerArmor)
+            console.log("Base64 decoded: " + decodedPlayerArmor)
         });
         document.getElementById('APIData').innerHTML = APIData;
     </script>
