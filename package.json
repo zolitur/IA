@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/zolitur/IA/issues"
   },
-  "homepage": "https://github.com/zolitur/IA#readme"
+  "homepage": "https://github.com/zolitur/IA#readme",
+  "dependencies": {
+    "pako": "^1.0.11"
+  }
 }
