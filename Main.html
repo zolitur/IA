@@ -39,22 +39,23 @@
                     profileType = "Co-op"
                 };
                 
-                function getArmor(memberId) {
-                    let encodedPlayerArmor = myJson.profile.members[memberId].inv_armor.data;
-                    let decoded = atob(encodedPlayerArmor);
-                let inflated
-                try {
-                result = pako.inflate(decoded);
-                } catch (err) {
-                console.log(err);
+                function parseNBTData(data) {
+                    let decoded = atob(data);
+                    let inflated
+                    try {
+                    result = pako.inflate(decoded);
+                    } catch (err) {
+                    console.log(err);
+                    }
+                    let parsedData = nbt.parseUncompressed(result, function(error, data) {
+                    if (error) { throw error; }
+                    });
+                    let stringData = JSON.stringify(parsedData);
+                    console.log(stringData)
+                    return stringData
+                    
                 }
-                let parseArmor = nbt.parseUncompressed(result, function(error, data) {
-                if (error) { throw error; }
-                });
-                let finalArmor = JSON.stringify(parseArmor);
-                return finalArmor
-                }
-
+                parseNBTData(myJson.profile.members[profileId].inv_armor.data)
                 });
         });
     </script>
