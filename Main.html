@@ -31,7 +31,9 @@
             .then((myJson) => {
                 let bankBalanceCurrent = myJson.profile.banking.balance
                 let membersList = Object.keys(myJson.profile.members)
+                let userUUID = membersList[0]
                 let profileType
+                console.log(JSON.stringify(myJson))
                 if(membersList.length == 1) {
                     profileType = "Solo"
                 }
@@ -50,32 +52,26 @@
                     let parsedData = nbt.parseUncompressed(result, function(error, data) {
                     if (error) { throw error; }
                     });
-                    let stringData = JSON.stringify(parsedData);
-                    console.log(stringData)
-                    return stringData
+                    return parsedData
                     
                 }
-                parseNBTData(myJson.profile.members[profileId].inv_armor.data)
+                document.getElementById("username").innerHTML = username;
+                document.getElementById("uuid").innerHTML = "Player UUID: " + userUUID;
+                document.getElementById("profileId").innerHTML = "Profile UUID: " + profileId;
+                if(profileType=="Solo") {
+                    document.getElementById("profileType").innerHTML = "This is a solo profile";
+                }
+                else {
+                    document.getElementById("profileType").innerHTML = "This is a co-op profile with " + membersList.length + " members";
+                }
                 });
         });
     </script>
     
-    <div id="app"></div>
-
-    <script type="text/babel">
-        class App extends React.Component {
-            render() {
-                return (
-                    <div className="app-content">
-                        <h1>Yeet</h1>
-                        
-                    </div>
-                    
-                )
-            }
-        }
-        ReactDOM.render(<App />, document.getElementById('app'))
-    </script>
+    <h1 id="username"></h1>
+    <h2 id="uuid"></h2>
+    <h2 id="profileId"></h2>
+    <h2 id="profileType"></h2>
 
 </body>
 </html>
