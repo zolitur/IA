@@ -18,24 +18,30 @@ class ApiData extends Component {
         fetch(linkHypixel)
         .then((resp) => resp.json())
         .then((myJson) => {
-            profileId = (JSON.stringify(Object.keys(myJson.player.stats.SkyBlock.profiles))).slice(2,-2)
-            let linkSkyblock = "https://api.hypixel.net/skyblock/profile?profile=" + profileId + "&key=287639ba-e4c1-4983-a0e2-5be5efff5af2"
-            fetch(linkSkyblock)
-            .then((resp) => resp.json())
-            .then((myJson) => {
-                console.log(myJson)
-                this.setState({
-                    active: true,
-                    success: myJson.success,
-                    skills: null,
-                    collection: myJson.profile.members[profileId].collection,
-                    inventory: null,
-                    banking: null,
-                })
-                
-                console.log(this.state.collection)
+            if(myJson.player!=null) {
+                profileId = (JSON.stringify(Object.keys(myJson.player.stats.SkyBlock.profiles))).slice(2,-2)
+                let linkSkyblock = "https://api.hypixel.net/skyblock/profile?profile=" + profileId + "&key=287639ba-e4c1-4983-a0e2-5be5efff5af2"
+                fetch(linkSkyblock)
+                .then((resp) => resp.json())
+                .then((myJson) => {
+                    console.log(myJson)
+                    this.setState({
+                        active: true,
+                        success: myJson.success,
+                        skills: null,
+                        collection: myJson.profile.members[profileId].collection,
+                        inventory: null,
+                        banking: null,
+                    })
+                    
+                    console.log(this.state.collection)
 
-            });
+                });
+            }
+            else {
+                console.log("This player does not exist")
+                return "This player does not exist"
+            }
         });
         
     }
