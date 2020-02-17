@@ -1,24 +1,33 @@
 import React, {Component} from 'react';
-import Statlist from './Statlist';
-import ApiData from './ApiData';
+import ApiData from "./ApiData";
+import HandleCollection from "./HandleCollection"
+
 class App extends Component {
   state = {
-    username: null
+    username: null,
+    success: null,
+    apiEnabled: null,
+    apiData: null,
+    profileId: null
   }
+
+  setApiData = (data, profileId) => {
+    this.setState({
+      apiData: data,
+      profileId: profileId
+    })
+    //console.log(this.state.apiData)
+  }
+
   render () {
-    return (
-      <div className="App">
-        <h1>Input a username to begin</h1>
-        <ApiData />
-        <Statlist name="Skills" data/>
-        <Statlist name="Collections" data/>
-        <Statlist name="Unlocked Minions" data/>
-        <Statlist name="Quests" data/>
-        <Statlist name="Kills" data/>
-        <Statlist name="Deaths" data/>
-      </div>
-    );
-  }
+      return (
+        <div className="App">
+          <h1>Input a username to begin</h1>
+          <ApiData setApiData = {this.setApiData}/>
+          <HandleCollection input = {this.state.apiData} profileId = {this.state.profileId}/>
+        </div>
+      );
+    }
 }
 
 export default App;

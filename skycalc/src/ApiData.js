@@ -2,44 +2,29 @@ import React, {Component} from 'react';
 
 class ApiData extends Component {
     state = {
-        active: false,
-        success: null,
-        apiEnabled: null,
-        skills: null,
-        collections: null,
-        inventory: null,
-        banking: null,
+        username: null
     }
     handleSubmit = (e) => {
         e.preventDefault();
         let username = this.state.username
-        let linkHypixel = ("https://api.hypixel.net/player?key=287639ba-e4c1-4983-a0e2-5be5efff5af2&name=" + username)
+        let linkHypixel = ("https://api.hypixel.net/player?key=b72aa44e-fdae-4668-8dbc-781ccf8c991c&name=" + username)
         let profileId
         fetch(linkHypixel)
         .then((resp) => resp.json())
         .then((myJson) => {
+            //console.log(myJson)
             if(myJson.player!=null) {
                 profileId = (JSON.stringify(Object.keys(myJson.player.stats.SkyBlock.profiles))).slice(2,-2)
-                let linkSkyblock = "https://api.hypixel.net/skyblock/profile?profile=" + profileId + "&key=287639ba-e4c1-4983-a0e2-5be5efff5af2"
+                let linkSkyblock = "https://api.hypixel.net/skyblock/profile?profile=" + profileId + "&key=b72aa44e-fdae-4668-8dbc-781ccf8c991c"
                 fetch(linkSkyblock)
                 .then((resp) => resp.json())
                 .then((myJson) => {
                     console.log(myJson)
-                    this.setState({
-                        active: true,
-                        success: myJson.success,
-                        skills: null,
-                        collection: myJson.profile.members[profileId].collection,
-                        inventory: null,
-                        banking: null,
-                    })
-                    
-                    console.log(this.state.collection)
-
+                    this.props.setApiData(myJson, profileId)
                 });
             }
             else {
-                console.log("This player does not exist")
+                console.log("This player does not exist, or the key is invalid")
                 return "This player does not exist"
             }
         });
