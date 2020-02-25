@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
-import ApiData from "./ApiData";
-import HandleCollection from "./HandleCollection"
+import ApiData from "./components/ApiData";
+import HandleCollection from "./components/HandleCollection"
+import HandleMinions from "./components/HandleMinions"
+import HandleSkills from "./components/HandleSkills"
+import HandleSlayerBosses from "./components/HandleSlayerBosses"
+import HandleInventories from "./components/HandleInventories"
 
 class App extends Component {
   state = {
@@ -24,7 +28,11 @@ class App extends Component {
         <div className="App">
           <h1>Input a username to begin</h1>
           <ApiData setApiData = {this.setApiData}/>
+          <HandleSkills input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleCollection input = {this.state.apiData} profileId = {this.state.profileId}/>
+          <HandleMinions input = {this.state.apiData} profileId = {this.state.profileId}/>
+          <HandleSlayerBosses input = {this.state.apiData} profileId = {this.state.profileId}/>
+          <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"inv_contents"}/>
         </div>
       );
     }
