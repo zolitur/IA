@@ -33,7 +33,7 @@ class HandleInventories extends Component {
                         this.setState({
                             loaded: true,
                             data: final,
-                            type: this.props.type.charAt(0).toUpperCase() + this.props.type.replace("_"," ").slice(1)
+                            type: this.props.type.charAt(0).toUpperCase() + this.props.type.replace(/_/g," ").slice(1)
                         })
                     }
                     return final
@@ -107,8 +107,9 @@ class HandleInventories extends Component {
                     lore = <ul>{lore}</ul>
                     output.push(<td key={Math.random()} className="inventory-slot">
                         <div className="inventory-slot">
-                            <img src={"./textures/item/"+textureFileName} width="50" height="50"/>
-                            {itemCount}
+                            <img className="item-in-slot" src={"./textures/item/"+textureFileName}/>
+                            <img className="background-slot" src={"./textures/gui/inventory_slot.png"} alt=""/>
+                            <div className="item-count">{itemCount}</div>
                             <div className="inventory-item-dropdown">
                                 <div>{styledName}</div>
                                 {lore}
@@ -118,7 +119,7 @@ class HandleInventories extends Component {
                     
                 }
                 else {
-                    output.push(<td key={Math.random()}><img className="empty-inventory-slot" src={"./textures/gui/inventory_slot.png"} alt="Empty" width="50" height="50"/></td>)
+                    output.push(<td key={Math.random()}><img className="empty-inventory-slot" src={"./textures/gui/inventory_slot.png"} alt="Empty" width="60" height="60"/></td>)
                 }
             }
             return output

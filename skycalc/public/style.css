@@ -6,8 +6,6 @@
     src: url("fonts/MinecraftRegular-Bmg3.otf");
 }
 
-
-
 ul {
     list-style-type: none;
 }
@@ -16,14 +14,38 @@ ul {
     position: relative;
 }
 
+.background-slot {
+    width:60px;
+    height:60px;
+    z-index:0;
+}
+
 .inventory-item-dropdown {
     display: none;
     position: absolute;
     background-color: #000000;
     min-width: 500px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
     overflow:auto
+}
+
+.item-in-slot {
+    position: absolute;
+    top:0;
+    left:0;
+    width:60px;
+    height:60px;
+    z-index:1;
+}
+
+.item-count {
+    position: absolute;
+    bottom:5px;
+    right:5px;
+    font-family: "Minecraft";
+    font-size: 20px;
+    color: white;
 }
 
 .§0 {
