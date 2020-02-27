@@ -33,6 +33,9 @@ class App extends Component {
           <HandleMinions input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleSlayerBosses input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"inv_contents"}/>
+          <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"ender_chest_contents"}/>
+          <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"talisman_bag"}/>
+          <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"candy_inventory_contents"}/>
         </div>
       );
     }

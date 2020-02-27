@@ -1,0 +1,98 @@
+@font-face {
+    font-family: "Minecraft";
+    /*src: url("fonts/MinecraftBold-nMK1.otf");
+    src: url("fonts/MinecraftBoldItalic-1y1e.otf");
+    src: url("fonts/MinecraftItalic-R8Mo.otf");*/
+    src: url("fonts/MinecraftRegular-Bmg3.otf");
+}
+
+
+
+ul {
+    list-style-type: none;
+}
+
+.inventory-slot {
+    position: relative;
+}
+
+.inventory-item-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #000000;
+    min-width: 500px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    overflow:auto
+}
+
+.§0 {
+    color: black;
+    font-family:"Minecraft";
+}
+.§8 {
+    color: #555555;
+    font-family:"Minecraft";
+}
+.§7 {
+    color: #AAAAAA;
+    font-family:"Minecraft";
+}
+.§f {
+    color: white;
+    font-family:"Minecraft";
+}
+.§5 {
+    color: #AA00AA;
+    font-family:"Minecraft";
+}
+.§d {
+    color: #FF55FF;
+    font-family:"Minecraft";
+}
+.§9 {
+    color: #5555FF;
+    font-family:"Minecraft";
+}
+.§1 {
+    color: #0000AA;
+    font-family:"Minecraft";
+}
+.§3 {
+    color: #00AAAA;
+    font-family:"Minecraft";
+}
+.§b {
+    color: #55FFFF;
+    font-family:"Minecraft";
+}
+.§a {
+    color: #55FF55;
+    font-family:"Minecraft";
+}
+.§2 {
+    color: #00AA00;
+    font-family:"Minecraft";
+}
+.§e {
+    color: #FFFF55;
+    font-family:"Minecraft";
+}
+.§6 {
+    color: #FFAA00;
+    font-family:"Minecraft";
+}
+.§c {
+    color: #FF5555;
+    font-family:"Minecraft";
+}
+.§4 {
+    color: #AA0000;
+    font-family:"Minecraft";
+}
+
+
+
+
+
+.inventory-slot:hover .inventory-item-dropdown {display: block;}

@@ -97,8 +97,8 @@ export function convertExperience(xp,name) {
                 sumNum++
             }
             else {
-                currentExp = Math.round((-1)*(xp-sumNum))
                 maxExp = Math.round(expList[i])
+                currentExp = Math.round(maxExp-(-1)*(xp-sumNum)) 
                 let final = {currentExp:currentExp,maxExp:maxExp,level:prevLevel}
                 return final
             }
@@ -113,10 +113,10 @@ export function convertExperience(xp,name) {
                 sumNum++
             }
             else {
-                currentExp = Math.round((-1)*(xp-sumNum))
-                    maxExp = Math.round(expList[i])
-                    let final = {currentExp:currentExp,maxExp:maxExp,level:prevLevel}
-                    return final
+                maxExp = Math.round(expList[i])
+                currentExp = Math.round(maxExp-(-1)*(xp-sumNum))
+                let final = {currentExp:currentExp,maxExp:maxExp,level:prevLevel}
+                return final
             }
         }
     }
