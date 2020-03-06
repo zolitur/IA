@@ -15,7 +15,7 @@ class HandleSkills extends Component {
     createSkillsArray = () => {
         if(this.state.loaded === false) {
             if(this.props.input != null && !this.state.blocked) {
-                if(this.props.input.profile.members[this.props.profileId].experience_combat!=null) {
+                if(this.props.input.profile.members[this.props.profileId].experience_skill_combat!=null) {
                     let statListKeys = Object.keys(this.props.input.profile.members[this.props.profileId])
                     let statListValues = Object.values(this.props.input.profile.members[this.props.profileId])
                     let final = []
@@ -129,12 +129,12 @@ class HandleSkills extends Component {
 
                 return (
                     <div>
-                        <h3 onClick={this.openAndClose}>Skill Levels</h3>
+                        <h3 className="menu" onClick={this.openAndClose}>Skill Levels</h3>
                         <div className="skill-search">
                             {searchBar}
                             {sortButton}
                         </div>
-                        <div className="skill-list">
+                        <div className="menu-opened" >
                             {htmlSkillsList}
                         </div> 
                             
@@ -142,7 +142,7 @@ class HandleSkills extends Component {
                 )
             }
             else {
-                return <p>This player has disabled their skills API access!</p>
+                return <p>This player has disabled their skills API access, or the API is refusing to return this data!</p>
             }
     }
 

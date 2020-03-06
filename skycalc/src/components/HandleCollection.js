@@ -142,12 +142,12 @@ class HandleCollection extends Component {
             }
             return (
                 <div>
-                    <h3 onClick={this.openAndClose}>Collection</h3>
+                    <h3 className="menu" onClick={this.openAndClose}>Collection</h3>
                     <div className="collection-search">
                         {searchBar}
                         {sortButton}
                     </div>
-                    <div className="collection-list">
+                    <div className="menu-opened" >
                         {htmlCollectionList}
                     </div> 
                         
@@ -155,7 +155,7 @@ class HandleCollection extends Component {
             )
         }
         else {
-            return <p>This player has disabled their collection API access!</p>
+            return <p>This player has disabled their collections API access, or the API is refusing to return this data!</p>
         }
     }
 

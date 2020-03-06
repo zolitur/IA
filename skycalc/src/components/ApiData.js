@@ -7,7 +7,7 @@ class ApiData extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         let username = this.state.username
-        let linkHypixel = ("https://api.hypixel.net/player?key=b72aa44e-fdae-4668-8dbc-781ccf8c991c&name=" + username)
+        let linkHypixel = ("https://api.hypixel.net/player?key=2ef7a998-201e-4de6-9957-f262cdb38c66&name=" + username)
         let profileId
         fetch(linkHypixel)
         .then((resp) => resp.json())
@@ -15,12 +15,12 @@ class ApiData extends Component {
             //console.log(myJson)
             if(myJson.player!=null) {
                 profileId = (JSON.stringify(Object.keys(myJson.player.stats.SkyBlock.profiles))).slice(2,-2)
-                let linkSkyblock = "https://api.hypixel.net/skyblock/profile?profile=" + profileId + "&key=b72aa44e-fdae-4668-8dbc-781ccf8c991c"
+                let linkSkyblock = "https://api.hypixel.net/skyblock/profile?profile=" + profileId + "&key=2ef7a998-201e-4de6-9957-f262cdb38c66"
                 fetch(linkSkyblock)
                 .then((resp) => resp.json())
                 .then((myJson) => {
                     console.log(myJson)
-                    this.props.setApiData(myJson, profileId)
+                    this.props.setApiData(myJson, profileId, username)
                 });
             }
             else {
@@ -39,8 +39,8 @@ class ApiData extends Component {
         return (
         <form onSubmit={this.handleSubmit}>
             <label>Username:</label>
-            <input type="text" onChange={this.handleChange}></input>
-            <button>Submit</button>
+            <input className="input-form" type="text" onChange={this.handleChange}></input>
+            <button className="large">Submit</button>
         </form>
         )
     }

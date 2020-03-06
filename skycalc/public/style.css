@@ -10,13 +10,37 @@ ul {
     list-style-type: none;
 }
 
+.Start {
+    position: relative;
+    text-align: center;
+}
+
+.Title {
+    font-size: 70px;
+    background-color: royalblue;
+}
+
+.menu {
+    width: 200px;
+    background-color: lightseagreen;
+    border: 2px solid green;
+    padding: 5px;
+    margin: 2px;
+}
+
+
+.inventory {
+    border-spacing: 0px;
+    margin: 0px;
+}
+
 .inventory-slot {
     position: relative;
 }
 
 .background-slot {
-    width:60px;
-    height:60px;
+    width:65px;
+    height:65px;
     z-index:0;
 }
 
@@ -24,18 +48,19 @@ ul {
     display: none;
     position: absolute;
     background-color: #000000;
+    font-family:"Minecraft";
     min-width: 500px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 2;
+    z-index: 3;
     overflow:auto
 }
 
 .item-in-slot {
     position: absolute;
-    top:0;
-    left:0;
-    width:60px;
-    height:60px;
+    top:7px;
+    left:7px;
+    width:50px;
+    height:50px;
     z-index:1;
 }
 
@@ -45,76 +70,57 @@ ul {
     right:5px;
     font-family: "Minecraft";
     font-size: 20px;
+    z-index:2;
     color: white;
 }
 
 .§0 {
     color: black;
-    font-family:"Minecraft";
 }
 .§8 {
     color: #555555;
-    font-family:"Minecraft";
 }
 .§7 {
     color: #AAAAAA;
-    font-family:"Minecraft";
 }
 .§f {
     color: white;
-    font-family:"Minecraft";
 }
 .§5 {
     color: #AA00AA;
-    font-family:"Minecraft";
 }
 .§d {
     color: #FF55FF;
-    font-family:"Minecraft";
 }
 .§9 {
     color: #5555FF;
-    font-family:"Minecraft";
 }
 .§1 {
     color: #0000AA;
-    font-family:"Minecraft";
 }
 .§3 {
     color: #00AAAA;
-    font-family:"Minecraft";
 }
 .§b {
     color: #55FFFF;
-    font-family:"Minecraft";
 }
 .§a {
     color: #55FF55;
-    font-family:"Minecraft";
 }
 .§2 {
     color: #00AA00;
-    font-family:"Minecraft";
 }
 .§e {
     color: #FFFF55;
-    font-family:"Minecraft";
 }
 .§6 {
     color: #FFAA00;
-    font-family:"Minecraft";
 }
 .§c {
     color: #FF5555;
-    font-family:"Minecraft";
 }
 .§4 {
     color: #AA0000;
-    font-family:"Minecraft";
 }
-
-
-
-
 
 .inventory-slot:hover .inventory-item-dropdown {display: block;}

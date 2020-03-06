@@ -131,12 +131,12 @@ class HandleMinions extends Component {
 
         return (
             <div>
-                <h3 onClick={this.openAndClose}>Crafted Minions</h3>
+                <h3 className="menu" onClick={this.openAndClose}>Crafted Minions</h3>
                 <div className="minion-search">
                     {searchBar}
                     {sortButton}
                 </div>
-                <div className="minion-list">
+                <div className="menu-opened" >
                     {htmlMinionsList}
                 </div> 
                     

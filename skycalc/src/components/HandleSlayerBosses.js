@@ -83,7 +83,7 @@ class HandleSlayerBosses extends Component {
                 )
             })
             tableWithLabels = (
-            <table key={Math.random()}>
+            <table className="menu-opened" key={Math.random()}>
                 <thead>
                     <tr>
                         <th>Name</th>
@@ -101,7 +101,7 @@ class HandleSlayerBosses extends Component {
 
         return (
             <div>
-                <h3 onClick={this.openAndClose}>Slayer Bosses</h3>
+                <h3 className="menu" onClick={this.openAndClose}>Slayer Bosses</h3>
                 <div className="slayer-table">
                     {tableWithLabels}
                 </div> 

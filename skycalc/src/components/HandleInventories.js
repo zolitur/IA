@@ -86,12 +86,24 @@ class HandleInventories extends Component {
             for(let i=start;i<end;i++) {
                 if(inventory[i]!==undefined && inventory[i].id!==undefined) {
                     let id = inventory[i].id.value;
+                    console.log(inventory[i])
                     let textureFileName = itemInventoryDictionary(id+"_0") + ".png"
                     let name = inventory[i].tag.value.display.value.Name.value
                     let separateByColor = name.split("§")
                     let styledName = separateByColor.map(item => {
                         return <span className={"§"+item.slice(0,1)} key={Math.random()}>{item.slice(1)}</span>
                     })
+
+                    /*For many items textures cannot be found based on the previous method, as their id system does not follow a simple pattern. 
+                    So as a last ditch effort, if the texture was indeed not found in the dictionary, the item's name is set as the texture name
+                    as this works for some items who's name only has 1 nbt color indicator. This may not work for all cases, but it helps eliminate
+                    some problems*/
+                    if(textureFileName==="raw_fish.png" || itemInventoryDictionary(id+"_0")===undefined) {
+                        textureFileName = name.slice(2).toLowerCase().replace(" ","_") + ".png"
+                        console.log("here")
+                    }
+                    console.log(name)
+                    console.log(textureFileName)
 
                     let itemCount = inventory[i].Count.value
                     if(inventory[i].Count.value===1) {
@@ -107,7 +119,7 @@ class HandleInventories extends Component {
                     lore = <ul>{lore}</ul>
                     output.push(<td key={Math.random()} className="inventory-slot">
                         <div className="inventory-slot">
-                            <img className="item-in-slot" src={"./textures/item/"+textureFileName}/>
+                            <img className="item-in-slot" src={"./textures/items/"+textureFileName}/>
                             <img className="background-slot" src={"./textures/gui/inventory_slot.png"} alt=""/>
                             <div className="item-count">{itemCount}</div>
                             <div className="inventory-item-dropdown">
@@ -119,7 +131,7 @@ class HandleInventories extends Component {
                     
                 }
                 else {
-                    output.push(<td key={Math.random()}><img className="empty-inventory-slot" src={"./textures/gui/inventory_slot.png"} alt="Empty" width="60" height="60"/></td>)
+                    output.push(<td key={Math.random()}><img className="background-slot" src={"./textures/gui/inventory_slot.png"} alt="Empty" width="60" height="60"/></td>)
                 }
             }
             return output
@@ -179,7 +191,7 @@ class HandleInventories extends Component {
             
             return (
                 <div>
-                    <h3 onClick={this.openAndClose}>{this.state.type}</h3>
+                    <h3 className = "menu" onClick={this.openAndClose}>{this.state.type}</h3>
                     <table className="inventory">
                         <tbody>
                             <tr>{bar6}</tr>

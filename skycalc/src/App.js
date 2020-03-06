@@ -15,19 +15,37 @@ class App extends Component {
     profileId: null
   }
 
-  setApiData = (data, profileId) => {
+  setApiData = (data, profileId, username) => {
     this.setState({
       apiData: data,
-      profileId: profileId
+      profileId: profileId,
+      username: username
     })
-    //console.log(this.state.apiData)
+    if(this.state.apiData!==null) {
+      this.setState({
+        success: true
+      })
+    }
+  }
+
+  handleReloadButton = () => {
+    window.location.reload();
   }
 
   render () {
+    if(this.state.success==null) {
+      return (
+        <div className="Start">
+          <h1 className="Title">Input a username to begin</h1>
+          <ApiData setApiData = {this.setApiData}/>
+        </div>
+      )
+    }  
+    else if (this.state.success) {
       return (
         <div className="App">
-          <h1>Input a username to begin</h1>
-          <ApiData setApiData = {this.setApiData}/>
+          <h1>Skyblock stats of {this.state.username}:</h1>
+          <button onClick={this.handleReloadButton}>Input different username</button>
           <HandleSkills input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleCollection input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleMinions input = {this.state.apiData} profileId = {this.state.profileId}/>
@@ -36,9 +54,20 @@ class App extends Component {
           <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"ender_chest_contents"}/>
           <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"talisman_bag"}/>
           <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"candy_inventory_contents"}/>
+          <HandleInventories input = {this.state.apiData} profileId = {this.state.profileId} type={"inv_armor"}/>
         </div>
-      );
+      )
     }
+    else {
+      return (
+        <div>
+          <h1>Something went wrong, this is an invalid username or there may be a problem with the Hypixel API service!</h1>
+          <button onClick={this.handleReloadButton}>Input different username</button>
+        </div>
+      )
+    }
+    
+  }
 }
 
 export default App;
