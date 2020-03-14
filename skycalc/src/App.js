@@ -10,22 +10,20 @@ class App extends Component {
   state = {
     username: null,
     success: null,
+    cause: null,
     apiEnabled: null,
     apiData: null,
     profileId: null
   }
 
-  setApiData = (data, profileId, username) => {
+  setApiData = (data, profileId, username, success, cause) => {
     this.setState({
       apiData: data,
       profileId: profileId,
-      username: username
+      username: username,
+      success: success,
+      cause: cause,
     })
-    if(this.state.apiData!==null) {
-      this.setState({
-        success: true
-      })
-    }
   }
 
   handleReloadButton = () => {
@@ -36,7 +34,7 @@ class App extends Component {
     if(this.state.success==null) {
       return (
         <div className="Start">
-          <h1 className="Title">Input a username to begin</h1>
+          <h1 className="Title">Welcome to skycalc</h1>
           <ApiData setApiData = {this.setApiData}/>
         </div>
       )
@@ -45,7 +43,7 @@ class App extends Component {
       return (
         <div className="App">
           <h1>Skyblock stats of {this.state.username}:</h1>
-          <button onClick={this.handleReloadButton}>Input different username</button>
+          <button onClick={this.handleReloadButton} className="reload">Input different username</button>
           <HandleSkills input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleCollection input = {this.state.apiData} profileId = {this.state.profileId}/>
           <HandleMinions input = {this.state.apiData} profileId = {this.state.profileId}/>
@@ -60,9 +58,10 @@ class App extends Component {
     }
     else {
       return (
-        <div>
-          <h1>Something went wrong, this is an invalid username or there may be a problem with the Hypixel API service!</h1>
-          <button onClick={this.handleReloadButton}>Input different username</button>
+        <div className="Start">
+          <h1>An error has occured, the following error message was returned by the API:</h1>
+          <h2 className="error">{this.state.cause}</h2>
+          <button onClick={this.handleReloadButton} className="reload">Input different username</button>
         </div>
       )
     }

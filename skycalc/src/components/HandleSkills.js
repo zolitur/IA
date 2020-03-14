@@ -102,12 +102,12 @@ class HandleSkills extends Component {
                     htmlSkillsList = objectSkillsList.map(item => {
                         if(this.state.search===null) {
                             return (
-                                <ul key={Math.random()}>{item.skill} level {item.level} ({item.currentExp} out of {item.maxExp} experience for next level</ul>
+                                <ul key={Math.random()}>{item.skill} level {item.level} ({item.currentExp} out of {item.maxExp} experience for next level)</ul>
                             )
                         }
                         else if (this.state.search.toLowerCase()===item.skill.slice(0,this.state.search.length).toLowerCase()) {
                             return (
-                                <ul key={Math.random()}>{item.skill} level {item.level} ({item.currentExp} out of {item.maxExp} experience for next level</ul>
+                                <ul key={Math.random()}>{item.skill} level {item.level} ({item.currentExp} out of {item.maxExp} experience for next level)</ul>
                             )
                         }
                         else {
